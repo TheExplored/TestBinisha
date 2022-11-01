@@ -4,3 +4,7 @@
 # switch to root user with sudo su and then execute the script
 sudo  su
 /root/Automation_Project/automation.sh
+
+# Installing awscli to run the aws s3 related command
+sudo apt update
+sudo apt install awscli
