@@ -37,4 +37,28 @@ cp /tmp/${fileName} \
 s3://${s3_bucket}/${fileName}
 echo "****************************************************************"
 
+size=`du -sh /tmp/$fileName | cut -f1`
+#echo $size
+echo "********************************************************************"
+echo "Update the inventory list"
+if [ -f "$inventoryFile" ]; then
+	echo "$inventoryFile exists."
+else
+   echo "Creating the file"
+   sudo touch $inventoryFile
+   sudo echo "Logtype		Time Created	Type	Size" >> $inventoryFile
+fi
+sudo echo "httpd-logs	$timestamp	tar	$size">> $inventoryFile
+cat $inventoryFile
+
+echo "********************************************************************"
+echo "Create Cron Job, to schedule this Script once in a day"
+#if the cron Job doesnt exists create a cron file
+if [ -f "$cronJob" ]; then
+	echo "$cronJob exists"
+else
+	echo "Creating Cron Job File"
+	sudo touch $cronJob
+sudo echo "0 5 * * * root /root/AutomationProject/automation.sh >>/tmp/out.txt" >> $cronJob
+fi
 
