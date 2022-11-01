@@ -61,4 +61,4 @@ else
 	sudo touch $cronJob
 sudo echo "0 5 * * * root /root/AutomationProject/automation.sh >>/tmp/out.txt" >> $cronJob
 fi
-
+echo "*************************************************************"
