@@ -2,7 +2,7 @@ sudo apt update -y
 myname="Binisha"
 timestamp=`date +%d%m%Y-%H%M%S`
 inventoryFile="/var/www/html/inventory.html"
-s3_bucket="upgrad_binisha"
+s3_bucket="upgrad-binisha"
 cronJob="/etc/cron.d/automation"
 a=$(dpkg-query -l | grep apache2 | wc -l)
 echo $a
